@@ -17,3 +17,7 @@
 .card img{
     height: 250px;
 }
+
+.propiedad {
+    border: 1px solid black;
+} 
