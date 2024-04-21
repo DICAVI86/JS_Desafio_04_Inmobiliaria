@@ -20,6 +20,14 @@
     height: 250px;
 }
 
+#listaPropiedades {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
 .propiedad {
-    border: 1px solid black;
-} 
+    width: 350px;
+
+}
+

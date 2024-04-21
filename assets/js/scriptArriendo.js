@@ -8,7 +8,7 @@ const propiedadesArriendo = [
     ubicacion: '123 Luxury Lane, Prestige Suburb, CA 45678',
     habitaciones: 4,
     costo: 5000,
-    smoke: false,
+    smoke: true,
     pets: false
     },
     {
@@ -38,7 +38,7 @@ const propiedadesArriendo = [
     ubicacion: 'Petrohue, KM800, XI Region, Chile',
     habitaciones: 3,
     costo: 3000,
-    smoke: false,
+    smoke: true,
     pets: true
     },
     {
@@ -49,7 +49,7 @@ const propiedadesArriendo = [
     habitaciones: 2,
     costo: 5000,
     smoke: false,
-    pets: true
+    pets: false
     },
     {
     nombre: 'Casa familar con gran jardín y piscina',
@@ -73,41 +73,50 @@ const propiedadesArriendo = [
             const propiedadElement = document.createElement("div");
             propiedadElement.classList.add("propiedad");
 
+            if (propiedad.smoke) {
+              propiedad.smoke = "No se permite fumar"
+            } else { propiedad.smoke = "Si se puede fumar"};
+
+            if (propiedad.pets) {
+              propiedad.pets = "No se permiten mascotas";
+            } else { propiedad.pets = "Si se permiten mascotas"};
+
             propiedadElement.innerHTML = `
-            <div class="col-md-4 mb-4">
-            <div class="card">
-              <img
-                src=${propiedad.src}
-                class="card-img-top"
-                alt="Imagen del departamento"
-              />
-              <div class="card-body">
-                <h5 class="card-title">
-                     ${propiedad.nombre}
-                </h5>
-                <p class="card-text">
-                    ${propiedad.descripcion}
-                </p>
-                <p>
-                  <i class="fas fa-map-marker-alt"></i> ${propiedad.ubicacion}
-                </p>
-                <p>
-                  <i class="fas fa-bed"></i> ${propiedad.habitaciones} Habitaciones |
-                  <i class="fas fa-bath"></i> 0 Baños
-                </p>
-                <p><i class="fas fa-dollar-sign"></i> ${propiedad.costo}</p>
-                <p class="text-danger">
-                  <i class="fas fa-smoking-ban"></i> No se permite fumar
-                </p>
-                <p class="text-danger">
-                  <i class="fa-solid fa-ban"></i> No se permiten mascotas
-                </p>
+            <div class="col-md mb-4">
+                <div class="card">
+                  <img
+                    src=${propiedad.src}
+                    class="card-img-top"
+                    alt="Imagen del departamento"
+                  />
+                  <div class="card-body">
+                  <h5 class="card-title">
+                      ${propiedad.nombre}
+                  </h5>
+                  <p class="card-text">
+                      ${propiedad.descripcion}
+                  </p>
+                  <p>
+                    <i class="fas fa-map-marker-alt"></i> ${propiedad.ubicacion}
+                  </p>
+                  <p>
+                    <i class="fas fa-bed"></i> ${propiedad.habitaciones} Habitaciones |
+                    <i class="fas fa-bath"></i> 0 Baños
+                  </p>
+                  <p><i class="fas fa-dollar-sign"></i> ${propiedad.costo}</p>
+                  <p>
+                    <i class="fas fa-smoking"></i> ${propiedad.smoke}
+                  </p>
+                  <p>
+                    <i class="fas fa-paw"></i> ${propiedad.pets}
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
             `;
 
         listaPropiedades.appendChild(propiedadElement);
+
 
         });
 
