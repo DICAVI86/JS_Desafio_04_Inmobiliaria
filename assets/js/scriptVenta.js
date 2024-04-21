@@ -2,7 +2,7 @@
 
 const propiedadesVenta = [
     {
-    nombre: 'Apartamento de lujo en zona exclusiva',
+    nombre: 'Gran casa familiar a las afueras de la ciudad',
     src: 'https://http2.mlstatic.com/D_NQ_NP_2X_616179-MLC75051250335_032024-F.jpg',
     descripcion: 'Este apartamento de lujo está ubicado en una exclusiva zona residencial',
     ubicacion: '123 Luxury Lane, Prestige Suburb, CA 45678',
@@ -12,7 +12,7 @@ const propiedadesVenta = [
     pets: false
     },
     {
-    nombre: 'Apartamento acogedor en la montaña',
+    nombre: 'Casa exclusiva y en buena ubicación',
     src: 'https://img.freepik.com/foto-gratis/villa-lujo-piscina-espectacular-diseno-contemporaneo-arte-digital-bienes-raices-hogar-casa-propiedad-ilustracion-generativa-ia_1258-151616.jpg?t=st=1713671785~exp=1713675385~hmac=6a86d43b483743182746d7cc57211348e74985f4823cd28f5c6e3d21cf77c988&w=1380',
     descripcion: 'Este apartamento acogedor está situado en lo alto de una montaña con impresionantes vistas',
     ubicacion: '789 Mountain Road, Summit Peaks, CA 23456',
@@ -22,7 +22,7 @@ const propiedadesVenta = [
     pets: true
     },
     {
-    nombre: 'Penthouse de lujo con terraza panorámica',
+    nombre: 'Departamento amoblado y en buena ubicación',
     src: 'https://img.freepik.com/foto-gratis/disparo-interior-casa-moderna-cocina-grandes-ventanales_181624-24368.jpg?t=st=1713672169~exp=1713675769~hmac=c4125d285ad11be6b98d14cea19f53ece36da6af0007106e66f805a61f9f405e&w=1800',
     descripcion: 'Este penthouse de lujo ofrece una terraza panorámica con vistas espectaculares',
     ubicacion: '567 Skyline Avenue, Skyview City, CA 56789',
@@ -32,13 +32,13 @@ const propiedadesVenta = [
     pets: true
     },
     {
-    nombre: 'Casa de campo con espectacular vista',
+    nombre: 'Hermosa casa con gran vista y mucho espacio',
     src: 'https://img.freepik.com/foto-gratis/imagen-edificio-madera-bosque_259150-58903.jpg?t=st=1713672218~exp=1713675818~hmac=fc55f3c64c35ef7e7a345405b61d271f69c107490b4b9a13a3b3ab1169597a41&w=1800',
     descripcion: 'Esta pequeña cabaña familiar esta ubicada en la mejor zona de Petrohue',
     ubicacion: 'Petrohue, KM800, XI Region, Chile',
     habitaciones: 3,
     costo: 3000,
-    smoke: true,
+    smoke: false,
     pets: true
     },
     {
@@ -58,7 +58,7 @@ const propiedadesVenta = [
     ubicacion: 'Blaise Cendrars 6588, Vitacura, Santiago, Chile',
     habitaciones: 5,
     costo: 7000,
-    smoke: false,
+    smoke: true,
     pets: true
     },
     ]
@@ -73,13 +73,13 @@ const propiedadesVenta = [
             const propiedadElement = document.createElement("div");
             propiedadElement.classList.add("propiedad");
 
-            if (propiedad.smoke) {
+/*             if (propiedad.smoke) {
               propiedad.smoke = "No se permite fumar"
             } else { propiedad.smoke = "Si se puede fumar"};
 
             if (propiedad.pets) {
               propiedad.pets = "No se permiten mascotas";
-            } else { propiedad.pets = "Si se permiten mascotas"};
+            } else { propiedad.pets = "Si se permiten mascotas"}; */
 
             propiedadElement.innerHTML = `
             <div class="col-md mb-4">
@@ -104,12 +104,16 @@ const propiedadesVenta = [
                     <i class="fas fa-bath"></i> 0 Baños
                   </p>
                   <p><i class="fas fa-dollar-sign"></i> ${propiedad.costo}</p>
-                  <p>
-                    <i class="fas fa-smoking"></i> ${propiedad.smoke}
-                  </p>
-                  <p>
-                    <i class="fas fa-paw"></i> ${propiedad.pets}
-                  </p>
+                  ${
+                    propiedad.smoke === true
+                    ? '<p class="text-success"><i class="fas fa-smoking"></i> Permitido fumar</p>'
+                    : '<p class="text-danger"><i class="fas fa-smoking-ban"></i> No se puede fumar</p>'
+                }
+                ${
+                    propiedad.pets === true
+                    ? '<p class="text-success"><i class="fas fa-paw"></i> Mascotas permitidas</p>'
+                    : '<p class="text-danger"><i class="fa-solid fa-ban"></i> No se permiten mascotas</p>'
+                }
                 </div>
               </div>
             </div>

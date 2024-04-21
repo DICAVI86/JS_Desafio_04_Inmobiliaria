@@ -73,13 +73,13 @@ const propiedadesArriendo = [
             const propiedadElement = document.createElement("div");
             propiedadElement.classList.add("propiedad");
 
-            if (propiedad.smoke) {
+           /*  if (propiedad.smoke) {
               propiedad.smoke = "No se permite fumar"
             } else { propiedad.smoke = "Si se puede fumar"};
 
             if (propiedad.pets) {
               propiedad.pets = "No se permiten mascotas";
-            } else { propiedad.pets = "Si se permiten mascotas"};
+            } else { propiedad.pets = "Si se permiten mascotas"}; */
 
             propiedadElement.innerHTML = `
             <div class="col-md mb-4">
@@ -104,12 +104,16 @@ const propiedadesArriendo = [
                     <i class="fas fa-bath"></i> 0 Baños
                   </p>
                   <p><i class="fas fa-dollar-sign"></i> ${propiedad.costo}</p>
-                  <p>
-                    <i class="fas fa-smoking"></i> ${propiedad.smoke}
-                  </p>
-                  <p>
-                    <i class="fas fa-paw"></i> ${propiedad.pets}
-                  </p>
+                  ${
+                    propiedad.smoke === true
+                    ? '<p class="text-success"><i class="fas fa-smoking"></i> Permitido fumar</p>'
+                    : '<p class="text-danger"><i class="fas fa-smoking-ban"></i> No se puede fumar</p>'
+                }
+                ${
+                    propiedad.pets === true
+                    ? '<p class="text-success"><i class="fas fa-paw"></i> Mascotas permitidas</p>'
+                    : '<p class="text-danger"><i class="fa-solid fa-ban"></i> No se permiten mascotas</p>'
+                }
                 </div>
               </div>
             </div>
